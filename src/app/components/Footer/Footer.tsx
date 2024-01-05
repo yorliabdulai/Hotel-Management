@@ -25,8 +25,24 @@ const Footer = () => {
                         <p className="ml-2">YorTech</p>
                     </div>
                 </div>
+                <div className="flex-1 md:text-right">
+                    <p className="pb-4">Our Story</p>
+                    <p className="pb-4">Get in Touch</p>
+                    <p className="pb-4">Our Privacy Commitment</p>
+                    <p className="pb-4">Terms of Service</p>
+                    <p>Customer Assistance</p>
+                </div>
+                <div className="flex-1 md:text-right">
+                    <p className="pb-4">Dining Experience</p>
+                    <p className="pb-4">Wellness</p>
+                    <p className="pb-4">Fitness</p>
+                    <p className="pb-4">Sports</p>
+                    <p>Events</p>
+                </div>
             </div>
            </div>
+           <div className="bg-tertiary-light h-10 md:h-[70px] mt-16 w-full bottom-0 left-0"/>
+    
         </footer>
     )   
 }
