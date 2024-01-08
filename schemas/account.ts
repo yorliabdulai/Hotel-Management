@@ -4,7 +4,7 @@ const account = {
     name: 'account',
     title: 'Account',
     type: 'document',
-    field: [
+    fields: [
         defineField({
            name: 'providerType',
            type: 'string',

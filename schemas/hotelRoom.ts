@@ -95,7 +95,37 @@ const hotelRoom = {
         type: 'number',
         validation: Rule => Rule.required().min(1),
         initialValue: 1,
-      })
+      }),
+      defineField({
+        name: 'offeredAmenities',
+        title: 'Offered Amenities',
+        type: 'array',
+        of: [
+            {type: 'object' , 
+            fields:[
+                {name: 'icon', title:'Icon', type:'string'},
+                {name: 'amenity', title: 'Amenity', type:'string'}
+            ]}
+        ]
+      }),
+      defineField({
+         name: 'isBooked',
+         title: 'Is Booked',
+         type: 'boolean',
+         initialValue: false,
+      }),
+      defineField({
+        name: 'isFeatured',
+        title: 'Is Featured',
+        type: 'boolean',
+        initialValue: false,
+     }),
+     defineField({
+        name: 'reviews',
+        title: 'Reviews',
+        type: 'array',
+        of: [{type: 'review'}]
+     })
    ],
 };
 export default hotelRoom
