@@ -17,6 +17,16 @@ const Auth = () => {
     const {name, value} = event.target;
     setFormData({...formData, [name]: value});
    };
+   const {data: session} = useSession();
+   console.log(session);
+   const loginHandler =async () => {
+    try {
+      await signIn()
+    } catch (error) {
+      console.log(error)
+      toast.error("Something went wrong")
+    }
+   }
    const handleSubmit = async (event: FormEvent<HTMLFormElement>) =>{
     event.preventDefault()
     try {
@@ -37,17 +47,17 @@ const Auth = () => {
                 <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl">Create an account</h1>
                 <p>OR</p>
                 <span className="inline-flex items-center">
-                  <AiFillGithub className="mr-3 text-4xl cursor-pointer text-black dark:text-white"/> | 
-                  <FcGoogle className="ml-3 text-4xl cursor-pointer"/>
+                  <AiFillGithub onClick={loginHandler} className="mr-3 text-4xl cursor-pointer text-black dark:text-white"/> | 
+                  <FcGoogle onClick={loginHandler} className="ml-3 text-4xl cursor-pointer"/>
                 </span>
               </div>
-              <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
+              <form className="space-y-4 md:space-y-6"  onSubmit={handleSubmit}>
               <input type='text' name='name' value={formData.name} onChange={handleInputChange} placeholder='Abdulai Iddrisu' required className={inputStyles}/>
                 <input type='email' name='email' value={formData.email} onChange={handleInputChange} placeholder='email@company.com' required className={inputStyles}/>
                 <input type='password' name='password' value={formData.password} onChange={handleInputChange} placeholder='password' required minLength={6} className={inputStyles}/>
                 <button type='submit' className='w-full bg-tertiary-dark focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center'>Sign Up</button>
               </form>
-              <button className='text-blue-700 underline'>login</button>
+              <button onClick={loginHandler} className='text-blue-700 underline'>login</button>
             </div>
         </section>
     )
