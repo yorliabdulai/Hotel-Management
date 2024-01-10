@@ -20,7 +20,12 @@ const Header = () => {
                   {session?.user ? (<Link href={`/users/${session.user.id}`}>
                     {session?.user ? (
                     <div className="w-10 h-10 rounded-full overflow-hidden">
-                      <Image src={session.user.image!} alt={session.user.name!} width={40} height={40} />
+                      <Image src={session.user.image!}
+                       alt={session.user.name!} 
+                       width={40}
+                        height={40} 
+                        className="scale-animation img"
+                        />
                     </div>): 
                     (<FaUserCircle className="cursor-pointer" />)}
                   </Link>) : (<Link href="/auth">
