@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react"
-import { set } from "sanity";
+
 type Props = {
     endValue: number ;
     duration: number;
@@ -10,11 +10,11 @@ const CountUpNumber: FC<Props> = ({endValue, duration}) => {
         let startTime: number;
         let animationFrameId: number;
       const updateCount = (timestamp: number) =>{
-        if(!startTime) startTime: timestamp;
+        if(!startTime) startTime = timestamp;
         const progress = timestamp - startTime;
 
         if(progress < duration) {
-            setCount(Math.min(endValue,(progress/duration)*endValue));
+            setCount(Math.min(endValue, (progress/duration)*endValue));
             animationFrameId = requestAnimationFrame(updateCount)
         } else (
             setCount(endValue)
