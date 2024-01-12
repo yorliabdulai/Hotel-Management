@@ -29,6 +29,11 @@ const Search = () => {
                  // onChange={handleSearchQueryChange}
                   />
             </div>
+            <button 
+            className="btn-primary"
+            type="button"
+            //onClick={handleFilterClick}
+            >Search</button>
         </div>
     </section>
  )
