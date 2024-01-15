@@ -16,6 +16,13 @@ const FeaturedRoom: FC<Props> = props => {
                height={300}
                className="img scale-animation"/>
              </div>
+             <div className="grid grid-cols-2 gap-8 h-48 ">
+                {featuredRoom.images.splice(1, 2).map(image => (
+                    <div key={image._key} className="rounded-2xl overflow-hidden">
+                        <Image src={image.url} alt={image._key} width={300} height={300} className="img scale-animation"/>
+                    </div>
+                ))}
+             </div>
            </div>
         </section>
     )
