@@ -1,3 +1,4 @@
+'use client'
 import { Room } from "@/app/models/room";
 import { FC } from "react";
 import Image from "next/image"
