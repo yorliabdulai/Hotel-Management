@@ -15,7 +15,7 @@ const Rooms = () =>{
 
       if (roomType) setRoomTypeFiter(roomType);
       if (searchQuery) setSeachQuery(searchQuery);
-    },[searchParams])
+    },[])
    async function fetchData(){
     return getRooms()
    }
