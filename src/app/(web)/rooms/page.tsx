@@ -1,5 +1,6 @@
 'use client'
 
+import { Room } from "@/app/models/room";
 import { getRooms } from "@/libs/apis";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -15,14 +16,28 @@ const Rooms = () =>{
 
       if (roomType) setRoomTypeFiter(roomType);
       if (searchQuery) setSeachQuery(searchQuery);
-    },[])
+    },[]);
    async function fetchData(){
     return getRooms()
    }
     const {data, error, isLoading} = useSWR("get/hotelRooms", fetchData)
     if (error) throw new Error("Cannot fetch data");
     if (typeof data === "undefined" && !isLoading) throw new Error("Cannot fetch data");
-    console.log(data)
+    
+    const filterRooms = (rooms: Room[]) =>{
+      return rooms.filter(room => {
+        if (roomTypeFilter && roomTypeFilter.toLowerCase() !== "all" && room.type.toLowerCase() !== roomTypeFilter.toLowerCase()){
+          return false;
+        };
+       if (searchQuery && !room.name.toLowerCase().includes(searchQuery.toLowerCase())){
+        return false;
+       } 
+        return true;
+      
+      })
+    };
+
+    const filteredRooms = filterRooms(data || [])
     return (
         <div className="rooms"></div>
     )
