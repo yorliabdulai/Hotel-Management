@@ -10,6 +10,8 @@ const Rooms = () =>{
     useEffect(()=>{
       const searchQuery = searchParams.get("searchQuery")
       const roomType = searchParams.get("roomType")
+
+      if (roomType)
     },[])
     return (
         <div className="rooms"></div>
