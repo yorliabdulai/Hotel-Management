@@ -6,3 +6,6 @@ export async function getFeaturedRoom(){
   const results = await sanityClient.fetch<Room>(queries.getFeaturedRoomQuery,{},{cache:'no-cache'})
   return results
 }
+export async function getRooms() {
+   const result = await sanityClient
+ }
