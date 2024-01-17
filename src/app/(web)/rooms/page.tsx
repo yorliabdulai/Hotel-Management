@@ -20,6 +20,9 @@ const Rooms = () =>{
     return getRooms()
    }
     const {data, error, isLoading} = useSWR("get/hotelRooms", fetchData)
+    if (error) throw new Error("Cannot fetch data");
+    if (typeof data === "undefined" && !isLoading) throw new Error("Cannot fetch data");
+    console.log(data)
     return (
         <div className="rooms"></div>
     )
