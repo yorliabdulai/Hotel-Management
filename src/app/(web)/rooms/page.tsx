@@ -11,8 +11,9 @@ const Rooms = () =>{
       const searchQuery = searchParams.get("searchQuery")
       const roomType = searchParams.get("roomType")
 
-      if (roomType)
-    },[])
+      if (roomType) setRoomTypeFiter(roomType);
+      if (searchQuery) setSeachQuery(searchQuery);
+    },[searchParams])
     return (
         <div className="rooms"></div>
     )
