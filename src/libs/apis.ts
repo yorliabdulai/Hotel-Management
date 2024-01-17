@@ -7,5 +7,5 @@ export async function getFeaturedRoom(){
   return results
 }
 export async function getRooms() {
-   const result = await sanityClient
+   const result = await sanityClient.fetch(queries.getRoomsQuery)
  }
