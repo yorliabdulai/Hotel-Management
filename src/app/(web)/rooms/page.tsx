@@ -43,7 +43,11 @@ const Rooms = () =>{
     return (
         <div className="container mx-auto pt-10">
           <Search roomTypeFilter={roomTypeFilter} searchQuery={searchQuery} setRoomTypeFilter={setRoomTypeFiter} setSearchQuery={setSeachQuery}/>
+          <div className="flex mt-20 justify-between flex-wrap">
+              {filteredRooms.map(room => <></>)}
+          </div>
         </div>
+        
     )
 }
 export default Rooms;
