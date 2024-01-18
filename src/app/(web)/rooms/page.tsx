@@ -1,6 +1,7 @@
 'use client'
 
 import { Room } from "@/app/models/room";
+import Search from "@/components/Search/Search";
 import { getRooms } from "@/libs/apis";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -38,8 +39,11 @@ const Rooms = () =>{
     };
 
     const filteredRooms = filterRooms(data || [])
+    
     return (
-        <div className="rooms"></div>
+        <div className="container mx-auto pt-10">
+          <Search roomTypeFilter={roomTypeFilter} searchQuery={searchQuery} setRoomTypeFilter={setRoomTypeFiter} setSearchQuery={setSeachQuery}/>
+        </div>
     )
 }
 export default Rooms;
