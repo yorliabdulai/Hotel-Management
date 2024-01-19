@@ -1,6 +1,7 @@
 'use client'
 
 import { Room } from "@/app/models/room";
+import RoomCard from "@/components/RoomCard/RoomCard";
 import Search from "@/components/Search/Search";
 import { getRooms } from "@/libs/apis";
 import { useSearchParams } from "next/navigation";
@@ -44,7 +45,7 @@ const Rooms = () =>{
         <div className="container mx-auto pt-10">
           <Search roomTypeFilter={roomTypeFilter} searchQuery={searchQuery} setRoomTypeFilter={setRoomTypeFiter} setSearchQuery={setSeachQuery}/>
           <div className="flex mt-20 justify-between flex-wrap">
-              {filteredRooms.map(room => <></>)}
+              {filteredRooms.map(room => <RoomCard key={room._id} room={room}/>)}
           </div>
         </div>
         
