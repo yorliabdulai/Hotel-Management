@@ -7,10 +7,10 @@ export async function getFeaturedRoom(){
   return result
 }
 export async function getRooms() {
-   const result = await sanityClient.fetch<Room[]>(queries.getRoomsQuery)
+   const result = await sanityClient.fetch<Room[]>(queries.getRoomsQuery, {},{cache:'no-cache'})
     return result
  }
 export async function getRoom(slug:string) {
-   const result = await sanityClient.fetch<Room[]>(queries.getRoom, {slug})
+   const result = await sanityClient.fetch<Room[]>(queries.getRoom, {slug}, {cache:'no-cache'})
     return result
  }
