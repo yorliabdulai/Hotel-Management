@@ -10,3 +10,7 @@ export async function getRooms() {
    const result = await sanityClient.fetch<Room[]>(queries.getRoomsQuery)
     return result
  }
+export async function getRoom(slug:string) {
+   const result = await sanityClient.fetch<Room[]>(queries.getRoom, {slug})
+    return result
+ }
