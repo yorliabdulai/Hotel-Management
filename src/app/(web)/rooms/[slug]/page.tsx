@@ -3,6 +3,7 @@
 import { getRoom } from "@/libs/apis";
 import useSWR from "swr";
 import LoadingSpinner from "../../loading";
+import HotelPhotoGallery from "@/components/HotelPhotoGallery/HotelPhotoGallery";
 
 const RoomDetails = (props: {params: {slug: string}}) => {
     const {params: {slug},
@@ -15,8 +16,7 @@ const {data: room, error, isLoading} = useSWR("/api/room", fetchRoom);
     
     return (
         <div>
-            <h1>Room Details</h1>
-            {/* Add your room details here */}
+           <HotelPhotoGallery photos={room.images} />
         </div>
     );
 };
