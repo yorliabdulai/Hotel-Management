@@ -24,6 +24,15 @@ const HotelPhotoGallery: FC<{photos: ImageType[]}> = ({photos}) => {
                          onClick={openModal.bind(this, 0)}
                          />
                     </div>
+                    <div className="md:hidden justify-center items-center w-full h-full">
+                        <Image src={photos[currentPhotoIndex].url} 
+                        alt={`Room Photo ${currentPhotoIndex + 1}`}
+                         className="img " 
+                         width={150} 
+                         height={150}
+                         onClick={openModal.bind(this, 0)}
+                         />
+                    </div>
                 </div>
             </div>
         </div>
