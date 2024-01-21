@@ -12,6 +12,12 @@ const HotelPhotoGallery: FC<{photos: ImageType[]}> = ({photos}) => {
         setCurrentPhotoIndex(index);
         setShowModal(true);
     }
+    const handlePrevious  = () =>{
+        setCurrentPhotoIndex(prevIndex => prevIndex === 0 ? photos.length- 1: prevIndex -1);
+    }
+    const handleNext  = () =>{
+        setCurrentPhotoIndex(prevIndex => prevIndex === photos.length - 1 ? 0: prevIndex + 1);
+    }
     return (
         <div className="container mx-auto">
             <div className="grid md:grid-cols-2 relative gap-5 px-3">
