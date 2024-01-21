@@ -2,6 +2,7 @@
 import { Image as ImageType } from "@/app/models/room";
 import Image from "next/image";
 import { FC, useState } from "react";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 
 const HotelPhotoGallery: FC<{photos: ImageType[]}> = ({photos}) => {
@@ -33,6 +34,15 @@ const HotelPhotoGallery: FC<{photos: ImageType[]}> = ({photos}) => {
                          onClick={openModal.bind(this, 0)}
                          />
                     </div>
+                </div>
+                <div className="md:hidden flex justify-between items-center">
+                  <div className="flex space-x-2">
+                    <FaArrowLeft  className="cursor-pointer" onClick={handlePrevious}/>
+                    <FaArrowRight className="cursor-pointer" onClick={handleNext}/>
+                  </div>
+                  <span>
+                    {currentPhotoIndex + 1} / {photos.length}
+                  </span>
                 </div>
             </div>
         </div>
