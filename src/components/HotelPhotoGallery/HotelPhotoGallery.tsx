@@ -83,7 +83,7 @@ const HotelPhotoGallery: FC<{photos: ImageType[]}> = ({photos}) => {
                         </div>
                     )}
                </div>
-               {showModal && <div className="fixed top-0 w-full h-full flex justify-center items-center bg-black bg-opacity-90 z-[55}">
+               {showModal && <div className="fixed top-0 w-full left-0 h-full flex justify-center items-center bg-black bg-opacity-90 z-[55}">
                 <div className="h-[75vh] w-[320px] md:w-[700px] relative">
                             <Image src={photos[currentPhotoIndex].url} 
                             alt={`Room Photo ${currentPhotoIndex + 1}`}
