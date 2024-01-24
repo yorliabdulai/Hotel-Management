@@ -37,6 +37,16 @@ const {data: room, error, isLoading} = useSWR("/api/room", fetchRoom);
                                 <h3 className="font-bold  mb-2 text-3xl">Description</h3>
                                 <p >{room.description}</p>
                             </div>
+                            <div className="mb-11">
+                                <h3 className="font-bold  mb-2 text-3xl">Offered Amenities</h3>
+                                <div className="grid grid-cols-2">
+                                    {room.offeredAmenities.map(ammenity => 
+                                    <div key={ammenity._key} className="flex items-center md:my-0 my-1">
+                                         <i className={`fa-solid ${ammenity.icon} `}></i>
+                                       <p className="text-xs md:text-base ml-2">{ammenity.amenity}</p>
+                                    </div>)}
+                                </div>
+                            </div>
                         </div>
                   </div>  
                   <div className="md:col-span-4 rounded-xl shadow-lg dark:shadow dark:shadow-white sticky top-10 h-fit overflow-auto">
