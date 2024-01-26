@@ -5,6 +5,7 @@ import useSWR from "swr";
 import LoadingSpinner from "../../loading";
 import {Room} from "@/app/models/room";
 import HotelPhotoGallery from "@/components/HotelPhotoGallery/HotelPhotoGallery";
+import { MdOutlineCleaningServices } from "react-icons/md";
 
 const RoomDetails = (props: {params: {slug: string}}) => {
     const {params: {slug},
@@ -45,6 +46,15 @@ const {data: room, error, isLoading} = useSWR("/api/room", fetchRoom);
                                          <i className={`fa-solid ${ammenity.icon} `}></i>
                                        <p className="text-xs md:text-base ml-2">{ammenity.amenity}</p>
                                     </div>)}
+                                </div>
+                            </div>
+                            <div className="mb-11">
+                                <h2 className="font-bold text-3xl mb-2">Safety and Hygiene</h2>
+                                <div className="grid grid-cols-2">
+                                    <div className="flex items-center my-1 md:my-0">
+                                        <MdOutlineCleaningServices />
+                                        <p className="ml-2 md:text-base text-xs">Daily Cleaning</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
