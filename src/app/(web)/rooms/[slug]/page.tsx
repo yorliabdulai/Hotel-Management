@@ -72,6 +72,16 @@ const {data: room, error, isLoading} = useSWR("/api/room", fetchRoom);
                                     </div>
                                 </div>
                             </div>
+                            
+                            <div className="shadow dark:shadow-white rounded-lg p-6">
+                                <div className="items-center mb-4">
+            
+                                    <p className="md:text-lg font-semibold">Customers Reviews</p>
+                                </div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    {/*Reviews*/}
+                                </div>
+                            </div>
                         </div>
                   </div>  
                   <div className="md:col-span-4 rounded-xl shadow-lg dark:shadow dark:shadow-white sticky top-10 h-fit overflow-auto">
