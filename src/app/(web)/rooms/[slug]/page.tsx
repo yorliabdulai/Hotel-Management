@@ -6,6 +6,9 @@ import LoadingSpinner from "../../loading";
 import {Room} from "@/app/models/room";
 import HotelPhotoGallery from "@/components/HotelPhotoGallery/HotelPhotoGallery";
 import { MdOutlineCleaningServices } from "react-icons/md";
+import { LiaFireExtinguisherSolid } from "react-icons/lia";
+import { AiOutlineMedicineBox } from "react-icons/ai";
+import { GiSmokeBomb } from "react-icons/gi";
 
 const RoomDetails = (props: {params: {slug: string}}) => {
     const {params: {slug},
@@ -54,6 +57,18 @@ const {data: room, error, isLoading} = useSWR("/api/room", fetchRoom);
                                     <div className="flex items-center my-1 md:my-0">
                                         <MdOutlineCleaningServices />
                                         <p className="ml-2 md:text-base text-xs">Daily Cleaning</p>
+                                    </div>
+                                    <div className="flex items-center my-1 md:my-0">
+                                        <LiaFireExtinguisherSolid />
+                                        <p className="ml-2 md:text-base text-xs">Fire Extinguishers</p>
+                                    </div>
+                                    <div className="flex items-center my-1 md:my-0">
+                                        <AiOutlineMedicineBox />
+                                        <p className="ml-2 md:text-base text-xs">Disinfections and Sterilizations</p>
+                                    </div>
+                                    <div className="flex items-center my-1 md:my-0">
+                                        <GiSmokeBomb />
+                                        <p className="ml-2 md:text-base text-xs">Smoke Detectors</p>
                                     </div>
                                 </div>
                             </div>
