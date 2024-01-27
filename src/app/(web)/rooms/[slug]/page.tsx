@@ -5,6 +5,7 @@ import useSWR from "swr";
 import LoadingSpinner from "../../loading";
 import {Room} from "@/app/models/room";
 import HotelPhotoGallery from "@/components/HotelPhotoGallery/HotelPhotoGallery";
+import BookRoomCta from "@/components/BookRoomCta/BookRoomCta"
 import { MdOutlineCleaningServices } from "react-icons/md";
 import { LiaFireExtinguisherSolid } from "react-icons/lia";
 import { AiOutlineMedicineBox } from "react-icons/ai";
@@ -86,6 +87,7 @@ const {data: room, error, isLoading} = useSWR("/api/room", fetchRoom);
                   </div>  
                   <div className="md:col-span-4 rounded-xl shadow-lg dark:shadow dark:shadow-white sticky top-10 h-fit overflow-auto">
                     {/*Room booking form */}
+                    <BookRoomCta />
                   </div> 
                 </div>
               </div>
