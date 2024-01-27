@@ -87,7 +87,7 @@ const {data: room, error, isLoading} = useSWR("/api/room", fetchRoom);
                   </div>  
                   <div className="md:col-span-4 rounded-xl shadow-lg dark:shadow dark:shadow-white sticky top-10 h-fit overflow-auto">
                     {/*Room booking form */}
-                    <BookRoomCta />
+                    <BookRoomCta discount={room.discount} price={room.price}/>
                   </div> 
                 </div>
               </div>
