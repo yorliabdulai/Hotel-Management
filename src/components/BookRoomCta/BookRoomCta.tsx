@@ -1,10 +1,20 @@
 "use client"
 
-const BookRoomCta = () => {
+import { FC } from "react";
+
+type Props = {
+    price: number,
+    discount: number
+}
+
+const BookRoomCta: FC<Props> = props => {
+    const {price, discount} = props;
     return (
-        <div>
-            <h2>Book a Room</h2>
-            <button>Book Now</button>
+        <div className="px-7 py-6">
+            <h3>
+                <span className=""></span>
+            </h3>
+            
         </div>
     );
 };
