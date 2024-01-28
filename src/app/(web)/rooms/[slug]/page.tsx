@@ -25,6 +25,7 @@ const {data: room, error, isLoading} = useSWR("/api/room", fetchRoom);
     const calcMinCheckoutDate = () => {
         if(checkinDate){
           const nextDay = new Date(checkinDate);
+            nextDay.setDate(nextDay.getDate() + 1);
         }
         return null
     }
