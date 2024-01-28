@@ -10,10 +10,13 @@ import { MdOutlineCleaningServices } from "react-icons/md";
 import { LiaFireExtinguisherSolid } from "react-icons/lia";
 import { AiOutlineMedicineBox } from "react-icons/ai";
 import { GiSmokeBomb } from "react-icons/gi";
+import { useState } from "react";
 
 const RoomDetails = (props: {params: {slug: string}}) => {
     const {params: {slug},
 } = props;
+const [checkinDate, setCheckinDate] = useState<Date | null>(null)
+const [checkoutDate, setCheckoutDate] = useState<Date | null>(null)
 const fetchRoom = async () => getRoom(slug)
 const {data: room, error, isLoading} = useSWR("/api/room", fetchRoom);
     if (error) throw new Error("Cannot fetch data");
@@ -87,7 +90,16 @@ const {data: room, error, isLoading} = useSWR("/api/room", fetchRoom);
                   </div>  
                   <div className="md:col-span-4 rounded-xl shadow-lg dark:shadow dark:shadow-white sticky top-10 h-fit overflow-auto">
                     {/*Room booking form */}
-                    <BookRoomCta discount={room.discount} price={room.price} specialNote={room.specialNote}/>
+                    <BookRoomCta 
+                    discount={room.discount} 
+                    price={room.price} 
+                    specialNote={room.specialNote}
+                    checkinDate={checkinDate}
+                    setCheckinDate={setCheckinDate}
+                    checkoutDate={checkoutDate}
+                    setCheckoutDate={setCheckoutDate}
+
+                    />
                   </div> 
                 </div>
               </div>
