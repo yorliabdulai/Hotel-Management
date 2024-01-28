@@ -1,17 +1,19 @@
 "use client"
 
-import { FC } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 
 type Props = {
+    checkinDate: Date | null,
+    setCheckinDate: Dispatch<SetStateAction<Date | null>>,
     price: number,
     discount: number,
     specialNote: string
 }
 
 const BookRoomCta: FC<Props> = props => {
-    const {price, discount, specialNote} = props;
+    const {price, discount, specialNote, checkinDate, setCheckinDate} = props;
     const discountPrice = price - (price / 100)* discount;
     return (
         <div className="px-7 py-6">
