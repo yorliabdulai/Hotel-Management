@@ -22,7 +22,12 @@ const {data: room, error, isLoading} = useSWR("/api/room", fetchRoom);
     if (error) throw new Error("Cannot fetch data");
     if (typeof room === "undefined" && !isLoading) throw new Error("Cannot fetch data");
     if (!room) return <LoadingSpinner />
-    
+    const calcMinCheckoutDate = () => {
+        if(checkinDate){
+          const nextDay = new Date(checkinDate);
+        }
+        return null
+    }
     return (
         <div>
            <HotelPhotoGallery photos={room.images} />
@@ -98,7 +103,7 @@ const {data: room, error, isLoading} = useSWR("/api/room", fetchRoom);
                     setCheckinDate={setCheckinDate}
                     checkoutDate={checkoutDate}
                     setCheckoutDate={setCheckoutDate}
-
+                    calcMinCheckoutDate={calcMinCheckoutDate}
                     />
                   </div> 
                 </div>

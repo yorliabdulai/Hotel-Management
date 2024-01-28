@@ -9,13 +9,14 @@ type Props = {
     setCheckinDate: Dispatch<SetStateAction<Date | null>>,
     checkoutDate: Date | null,
     setCheckoutDate: Dispatch<SetStateAction<Date | null>>,
+    calcMinCheckoutDate: () => Date | null ,
     price: number,
     discount: number,
     specialNote: string
 }
 
 const BookRoomCta: FC<Props> = props => {
-    const {price, discount, specialNote, checkinDate, setCheckinDate, checkoutDate, setCheckoutDate} = props;
+    const {price, discount, specialNote, checkinDate, setCheckinDate, checkoutDate, setCheckoutDate, calcMinCheckoutDate} = props;
     const discountPrice = price - (price / 100)* discount;
     return (
         <div className="px-7 py-6">
@@ -50,7 +51,7 @@ const BookRoomCta: FC<Props> = props => {
                     onChange={date => setCheckoutDate(date)} 
                     dateFormat="dd/MM/yyyy" 
                     disabled= {!checkinDate}
-                    //minDate={}
+                    minDate={calcMinCheckoutDate()}
                     id="check-out-date"
                     className="w-full text-black border rounded-lg border-gray-300 p-2.5 focus:ring-primary focus:border-primary "
                     />
