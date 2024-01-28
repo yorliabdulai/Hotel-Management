@@ -21,6 +21,13 @@ const BookRoomCta: FC<Props> = props => {
             </h3>
             <div className="w-full border-b-2 border-b-secondaary my-2 "/>
             <h4 className="my-8">{specialNote}</h4>
+            <div className="flex">
+                <div className="w-1/2 pr-2">
+                    <label htmlFor="check-in-date" className="block text-sm font-medium text-gray-900 dark:text-gray-400 ">
+                        Check In date
+                    </label>
+                </div>
+            </div>
         </div>
     );
 };
