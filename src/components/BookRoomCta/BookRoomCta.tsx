@@ -13,14 +13,14 @@ type Props = {
     price: number,
     adults: number,
     setAdults: Dispatch<SetStateAction<number>>,
-    children: number,
-    setChildren: Dispatch<SetStateAction<number>>,
+    noOfChildren: number,
+    setNoOfChildren: Dispatch<SetStateAction<number>>,
     discount: number,
     specialNote: string
 }
 
 const BookRoomCta: FC<Props> = props => {
-    const {price, discount, specialNote, checkinDate, setCheckinDate, checkoutDate, setCheckoutDate, calcMinCheckoutDate, adults, setAdults, children, setChildren} = props;
+    const {price, discount, specialNote, checkinDate, setCheckinDate, checkoutDate, setCheckoutDate, calcMinCheckoutDate, adults, setAdults, noOfChildren, setNoOfChildren} = props;
     const discountPrice = price - (price / 100)* discount;
     return (
         <div className="px-7 py-6">
@@ -83,8 +83,8 @@ const BookRoomCta: FC<Props> = props => {
                     <input 
                   type="number" 
                   id="children"
-                  value={children}
-                  onChange={e => setChildren(+e.target.value)}
+                  value={noOfChildren}
+                  onChange={e => setNoOfChildren(+e.target.value)}
                   min={0}
                   max={5}
                     className="w-full text-black border rounded-lg border-gray-300 p-2.5 focus:ring-primary focus:border-primary "
