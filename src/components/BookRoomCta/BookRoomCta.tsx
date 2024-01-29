@@ -11,12 +11,16 @@ type Props = {
     setCheckoutDate: Dispatch<SetStateAction<Date | null>>,
     calcMinCheckoutDate: () => Date | null ,
     price: number,
+    adults: number,
+    setAdults: Dispatch<SetStateAction<number>>,
+    children: number,
+    setChildren: Dispatch<SetStateAction<number>>,
     discount: number,
     specialNote: string
 }
 
 const BookRoomCta: FC<Props> = props => {
-    const {price, discount, specialNote, checkinDate, setCheckinDate, checkoutDate, setCheckoutDate, calcMinCheckoutDate} = props;
+    const {price, discount, specialNote, checkinDate, setCheckinDate, checkoutDate, setCheckoutDate, calcMinCheckoutDate, adults, setAdults, children, setChildren} = props;
     const discountPrice = price - (price / 100)* discount;
     return (
         <div className="px-7 py-6">
@@ -55,6 +59,28 @@ const BookRoomCta: FC<Props> = props => {
                     id="check-out-date"
                     className="w-full text-black border rounded-lg border-gray-300 p-2.5 focus:ring-primary focus:border-primary "
                     />
+                </div>
+            </div>
+            <div className="flex mt-4">
+                <div className="w-1/2 pr-2">
+                    <label htmlFor="adults" className="block text-sm font-medium text-gray-900 dark:text-gray-400 ">
+                        Adults
+                    </label>
+                  <input 
+                  type="number" 
+                  id="adults"
+                  value={adults}
+                  onChange={e => setAdults(+e.target.value)}
+                  min={1}
+                  max={5}
+                    className="w-full text-black border rounded-lg border-gray-300 p-2.5 focus:ring-primary focus:border-primary "
+                  />
+                </div>
+                <div className="w-1/2 pl-2">
+                    <label htmlFor="children" className="block text-sm font-medium text-gray-900 dark:text-gray-400 ">
+                        Children
+                    </label>
+                    
                 </div>
             </div>
         </div>

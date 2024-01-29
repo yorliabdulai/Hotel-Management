@@ -17,6 +17,8 @@ const RoomDetails = (props: {params: {slug: string}}) => {
 } = props;
 const [checkinDate, setCheckinDate] = useState<Date | null>(null)
 const [checkoutDate, setCheckoutDate] = useState<Date | null>(null)
+const [adults, setAdults] = useState(1)
+const [children, setChildren] = useState(0)
 const fetchRoom = async () => getRoom(slug)
 const {data: room, error, isLoading} = useSWR("/api/room", fetchRoom);
     if (error) throw new Error("Cannot fetch data");
@@ -26,6 +28,7 @@ const {data: room, error, isLoading} = useSWR("/api/room", fetchRoom);
         if(checkinDate){
           const nextDay = new Date(checkinDate);
             nextDay.setDate(nextDay.getDate() + 1);
+            return nextDay;
         }
         return null
     }
