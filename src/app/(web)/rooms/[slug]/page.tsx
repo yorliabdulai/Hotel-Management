@@ -11,6 +11,7 @@ import { LiaFireExtinguisherSolid } from "react-icons/lia";
 import { AiOutlineMedicineBox } from "react-icons/ai";
 import { GiSmokeBomb } from "react-icons/gi";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const RoomDetails = (props: {params: {slug: string}}) => {
     const {params: {slug},
@@ -32,6 +33,28 @@ const {data: room, error, isLoading} = useSWR("/api/room", fetchRoom);
         }
         return null
     }
+    const handleBookNowClick = () => {
+        if(!checkinDate || !checkoutDate) return toast.error("Please provide checkin / checkout date");
+        if(checkinDate > checkoutDate) return toast.error("Please select a valid checkin period");
+        //const noOfDays = calcNoOfDays();
+        //const price = room.discount? room.price - (room.price / 100)* room.discount: room.price;
+        //const total = (price * noOfDays) + (price * noOfDays * 0.1);
+        //const discount = room.discount? room.discount: 0;
+        //const roomData = {
+          //  room: room.name,
+          //  price,
+          //  discount,
+          //  total,
+          //  checkinDate,
+            //checkoutDate,
+           // noOfDays,
+           // adults,
+         //   noOfChildren
+        }
+        //console.log(roomData);
+        
+    }
+
     return (
         <div>
            <HotelPhotoGallery photos={room.images} />
@@ -112,6 +135,8 @@ const {data: room, error, isLoading} = useSWR("/api/room", fetchRoom);
                     noOfChildren={noOfChildren}
                     setAdults={setAdults}
                     setNoOfChildren={setNoOfChildren}
+                    isBooked={room.isBooked}
+                    handleBookNowClick={handleBookNowClick}
                     />
                   </div> 
                 </div>
