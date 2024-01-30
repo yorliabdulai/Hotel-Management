@@ -100,6 +100,9 @@ const BookRoomCta: FC<Props> = props => {
                   />
                 </div>
             </div>
+            {calcNoOfDays() ?? 0 > 0 ? <p className="mt-3">
+                Total Price: $ {(calcNoOfDays() ?? 0) * discountPrice}
+            </p> : <></>}
         </div>
     );
 };
