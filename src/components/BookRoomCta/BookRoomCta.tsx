@@ -16,11 +16,13 @@ type Props = {
     noOfChildren: number,
     setNoOfChildren: Dispatch<SetStateAction<number>>,
     discount: number,
-    specialNote: string
+    specialNote: string,
+    isBooked: boolean,
+    handleBookNowClick: () => void
 }
 
 const BookRoomCta: FC<Props> = props => {
-    const {price, discount, specialNote, checkinDate, setCheckinDate, checkoutDate, setCheckoutDate, calcMinCheckoutDate, adults, setAdults, noOfChildren, setNoOfChildren} = props;
+    const {price, discount, specialNote, checkinDate,isBooked, handleBookNowClick, setCheckinDate, checkoutDate, setCheckoutDate, calcMinCheckoutDate, adults, setAdults, noOfChildren, setNoOfChildren} = props;
     const discountPrice = price - (price / 100)* discount;
     const calcNoOfDays = () => {
         if (!props.checkinDate || !props.checkoutDate) return 0;
@@ -103,6 +105,12 @@ const BookRoomCta: FC<Props> = props => {
             {calcNoOfDays() ?? 0 > 0 ? <p className="mt-3">
                 Total Price: $ {(calcNoOfDays() ?? 0) * discountPrice}
             </p> : <></>}
+            <button 
+            disabled={isBooked}
+            onClick={handleBookNowClick}
+            className="w-full btn-primary mt-6 disabled:bg-gray-500 disabled:cursor-not-allowed">
+                {isBooked ? "Booked" : "Book Now"}
+            </button>
         </div>
     );
 };
