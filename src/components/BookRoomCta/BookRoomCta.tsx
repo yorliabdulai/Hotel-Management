@@ -22,6 +22,15 @@ type Props = {
 const BookRoomCta: FC<Props> = props => {
     const {price, discount, specialNote, checkinDate, setCheckinDate, checkoutDate, setCheckoutDate, calcMinCheckoutDate, adults, setAdults, noOfChildren, setNoOfChildren} = props;
     const discountPrice = price - (price / 100)* discount;
+    const calcNoOfDays = () => {
+        if (!props.checkinDate || !props.checkoutDate) return 0;
+        if(checkinDate && checkoutDate){
+            const diffTime = Math.abs(checkoutDate.getTime() - checkinDate.getTime());
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+            return diffDays;
+        }
+        
+    }
     return (
         <div className="px-7 py-6">
             <h3>
@@ -86,7 +95,7 @@ const BookRoomCta: FC<Props> = props => {
                   value={noOfChildren}
                   onChange={e => setNoOfChildren(+e.target.value)}
                   min={0}
-                  max={5}
+                  max={3}
                     className="w-full text-black border rounded-lg border-gray-300 p-2.5 focus:ring-primary focus:border-primary "
                   />
                 </div>
