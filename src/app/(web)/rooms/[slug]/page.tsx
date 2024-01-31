@@ -1,6 +1,6 @@
 "use client"
 
-import { getRoom } from "@/libs/apis";
+import { getRoom, getRooms } from "@/libs/apis";
 import useSWR from "swr";
 import LoadingSpinner from "../../loading";
 import {Room} from "@/app/models/room";
@@ -20,8 +20,11 @@ const [checkinDate, setCheckinDate] = useState<Date | null>(null)
 const [checkoutDate, setCheckoutDate] = useState<Date | null>(null)
 const [adults, setAdults] = useState(1)
 const [noOfChildren, setNoOfChildren] = useState(0)
-const fetchRoom = async () => getRoom(slug)
-const {data: room, error, isLoading} = useSWR("/api/room", fetchRoom);
+const fetchRoom = async () => {
+    const room = await getRoom(slug);
+    return room[0];
+  };
+const {data: room, error, isLoading} = useSWR<Room>(`/api/room?slug=${slug}`, fetchRoom);
     if (error) throw new Error("Cannot fetch data");
     if (typeof room === "undefined" && !isLoading) throw new Error("Cannot fetch data");
     if (!room) return <LoadingSpinner />
@@ -37,16 +40,17 @@ const {data: room, error, isLoading} = useSWR("/api/room", fetchRoom);
         if(!checkinDate || !checkoutDate) return toast.error("Please provide checkin / checkout date");
         if(checkinDate > checkoutDate) return toast.error("Please select a valid checkin period");
         const numberOfDays = calcNumDays()
+        const hotelRoomSlug = room.slug.current;
         }
         const calcNumDays = () => {
-            if (!checkinDate || !checkoutDate) return 0;
+            if (!checkinDate || !checkoutDate) return;
             if(checkinDate && checkoutDate){
                 const diffTime = Math.abs(checkoutDate.getTime() - checkinDate.getTime());
                 const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
                 return diffDays;
             }
         
-    
+     }
 
     return (
         <div>
