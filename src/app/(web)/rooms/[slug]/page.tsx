@@ -36,24 +36,17 @@ const {data: room, error, isLoading} = useSWR("/api/room", fetchRoom);
     const handleBookNowClick = () => {
         if(!checkinDate || !checkoutDate) return toast.error("Please provide checkin / checkout date");
         if(checkinDate > checkoutDate) return toast.error("Please select a valid checkin period");
-        //const noOfDays = calcNoOfDays();
-        //const price = room.discount? room.price - (room.price / 100)* room.discount: room.price;
-        //const total = (price * noOfDays) + (price * noOfDays * 0.1);
-        //const discount = room.discount? room.discount: 0;
-        //const roomData = {
-          //  room: room.name,
-          //  price,
-          //  discount,
-          //  total,
-          //  checkinDate,
-            //checkoutDate,
-           // noOfDays,
-           // adults,
-         //   noOfChildren
+        const numberOfDays = calcNumDays()
         }
-        //console.log(roomData);
+        const calcNumDays = () => {
+            if (!checkinDate || !checkoutDate) return 0;
+            if(checkinDate && checkoutDate){
+                const diffTime = Math.abs(checkoutDate.getTime() - checkinDate.getTime());
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+                return diffDays;
+            }
         
-    }
+    
 
     return (
         <div>
