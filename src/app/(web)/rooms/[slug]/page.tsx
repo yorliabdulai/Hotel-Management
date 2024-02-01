@@ -41,6 +41,7 @@ const {data: room, error, isLoading} = useSWR<Room>(`/api/room?slug=${slug}`, fe
         if(checkinDate > checkoutDate) return toast.error("Please select a valid checkin period");
         const numberOfDays = calcNumDays()
         const hotelRoomSlug = room.slug.current;
+        // Integrate payment systems
         }
         const calcNumDays = () => {
             if (!checkinDate || !checkoutDate) return;

@@ -1,4 +1,4 @@
-import { Room } from "@/app/models/room";
+import { CreateBookingDto, Room } from "@/app/models/room";
 import sanityClient from "./sanity";
 import * as queries from "./sanityQueries"
 
@@ -13,4 +13,8 @@ export async function getRooms() {
 export async function getRoom(slug:string) {
    const result = await sanityClient.fetch<Room[]>(queries.getRoom, {slug}, {cache:'no-cache'})
     return result
+ }
+
+ export const createBooking = async ({} : CreateBookingDto) => {
+   
  }
