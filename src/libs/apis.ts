@@ -15,6 +15,16 @@ export async function getRoom(slug:string) {
     return result
  }
 
- export const createBooking = async ({} : CreateBookingDto) => {
+ export const createBooking = async ({
+   user,
+   hotelRoom,
+   checkinDate,
+   checkoutDate,
+   numberOfDays,
+   adults,
+   children,
+   totalPrice,
+   discount,
+ } : CreateBookingDto) => {
    
  }
