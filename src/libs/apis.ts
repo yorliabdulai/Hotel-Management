@@ -26,5 +26,8 @@ export async function getRoom(slug:string) {
    totalPrice,
    discount,
  } : CreateBookingDto) => {
-   
- }
+   const mutation = {
+      mutations: [{create: {_type: "booking", user: {_type: "reference", _ref: user}, hotelRoom: {_type: "reference", _ref: hotelRoom}, checkinDate, checkoutDate, numberOfDays, adults, children, totalPrice, discount}}]
+   }
+ } 
+ 
