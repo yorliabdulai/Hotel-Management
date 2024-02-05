@@ -13,6 +13,6 @@ type RequestData = {
     hotelRoomSlug: string;
 }
  export async function POST(req: Request, res: Response) {
-    const {} = await req.json;
+    const {checkinDate, checkoutDate, adults, children, numberOfDays, hotelRoomSlug}: RequestData = await req.json();
    
  }
