@@ -28,4 +28,10 @@ type RequestData = {
     const userId = session.user.id;
     const formattedCheckoutDate = checkoutDate.split("T")[0];
     const formattedCheckinDate = checkinDate.split("T")[0];
+     try {
+        
+     } catch (error: any) {
+        console.log('Payment failed', error)
+        return new NextResponse(error, { status: 500 });
+     }
  }
