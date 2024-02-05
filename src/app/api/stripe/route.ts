@@ -30,7 +30,9 @@ type RequestData = {
     const formattedCheckoutDate = checkoutDate.split("T")[0];
     const formattedCheckinDate = checkinDate.split("T")[0];
      try {
-        const room = await getRoom(hotelRoomSlug)
+        const room: any = await getRoom(hotelRoomSlug)
+        const discountPrice = room.price - (room.price / 100) * room.discount;
+        const totalPrice = discountPrice * numberOfDays;
      } catch (error: any) {
         console.log('Payment failed', error)
         return new NextResponse(error, { status: 500 });
