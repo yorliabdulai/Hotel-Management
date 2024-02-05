@@ -21,5 +21,11 @@ type RequestData = {
     return new NextResponse("Please all fields are required", { status: 400 });
    }
    const origin = req.headers.get("origin");
-   const session = await getServerSession(authOptions)
+   const session = await getServerSession(authOptions);
+    if (!session) {
+         return new NextResponse("Authentication required", { status: 401 });
+    }
+    const userId = session.user.id;
+    const formattedCheckoutDate = checkoutDate.split("T")[0];
+    const formattedCheckinDate = checkinDate.split("T")[0];
  }
