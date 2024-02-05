@@ -1,3 +1,4 @@
+import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
@@ -14,5 +15,7 @@ type RequestData = {
 }
  export async function POST(req: Request, res: Response) {
     const {checkinDate, checkoutDate, adults, children, numberOfDays, hotelRoomSlug}: RequestData = await req.json();
-   
+   if (!checkinDate || !checkoutDate || !adults || !children || !numberOfDays || !hotelRoomSlug){
+    return new NextResponse("Please all fields are required", { status: 400 });
+   }
  }
