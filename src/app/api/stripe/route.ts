@@ -1,3 +1,4 @@
+import { getRoom } from "@/libs/apis";
 import { authOptions } from "@/libs/auth";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
@@ -29,7 +30,7 @@ type RequestData = {
     const formattedCheckoutDate = checkoutDate.split("T")[0];
     const formattedCheckinDate = checkinDate.split("T")[0];
      try {
-        
+        const room = await getRoom(hotelRoomSlug)
      } catch (error: any) {
         console.log('Payment failed', error)
         return new NextResponse(error, { status: 500 });
