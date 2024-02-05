@@ -1,3 +1,5 @@
+import { authOptions } from "@/libs/auth";
+import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
@@ -18,4 +20,6 @@ type RequestData = {
    if (!checkinDate || !checkoutDate || !adults  || !numberOfDays || !hotelRoomSlug){
     return new NextResponse("Please all fields are required", { status: 400 });
    }
+   const origin = req.headers.get("origin");
+   const session = await getServerSession(authOptions)
  }
