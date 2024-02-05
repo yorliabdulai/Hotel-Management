@@ -33,6 +33,21 @@ type RequestData = {
         const room: any = await getRoom(hotelRoomSlug)
         const discountPrice = room.price - (room.price / 100) * room.discount;
         const totalPrice = discountPrice * numberOfDays;
+        const stripeSession = await stripe.checkout.sessions.create({
+            mode: 'payment',
+            line_items: [{
+                price_data: {
+                    currency: "usd",
+                    product_data: {
+                        name: room.name,
+                        images: room.images.map((image: { url: any; }) => image.url),
+                    },
+                    
+                },
+                quantity: 1,
+            }],
+            
+        })
      } catch (error: any) {
         console.log('Payment failed', error)
         return new NextResponse(error, { status: 500 });
