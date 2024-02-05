@@ -15,7 +15,7 @@ type RequestData = {
 }
  export async function POST(req: Request, res: Response) {
     const {checkinDate, checkoutDate, adults, children, numberOfDays, hotelRoomSlug}: RequestData = await req.json();
-   if (!checkinDate || !checkoutDate || !adults || !children || !numberOfDays || !hotelRoomSlug){
+   if (!checkinDate || !checkoutDate || !adults  || !numberOfDays || !hotelRoomSlug){
     return new NextResponse("Please all fields are required", { status: 400 });
    }
  }
