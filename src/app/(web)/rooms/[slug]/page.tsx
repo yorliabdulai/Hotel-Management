@@ -12,6 +12,7 @@ import { AiOutlineMedicineBox } from "react-icons/ai";
 import { GiSmokeBomb } from "react-icons/gi";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const RoomDetails = (props: {params: {slug: string}}) => {
     const {params: {slug},
@@ -36,12 +37,25 @@ const {data: room, error, isLoading} = useSWR<Room>(`/api/room?slug=${slug}`, fe
         }
         return null
     }
-    const handleBookNowClick = () => {
+    const handleBookNowClick = async () => {
         if(!checkinDate || !checkoutDate) return toast.error("Please provide checkin / checkout date");
         if(checkinDate > checkoutDate) return toast.error("Please select a valid checkin period");
         const numberOfDays = calcNumDays()
         const hotelRoomSlug = room.slug.current;
         // Integrate payment systems
+        try {
+            const {data: stripeSession} = await axios.post('/api/stripe',{
+                checkinDate,
+                checkoutDate,
+                adults,
+                childern: noOfChildren,
+                numberOfDays,
+                hotelRoomSlug,
+                price: room.price
+            })
+        } catch (error) {
+            
+        }
         }
         const calcNumDays = () => {
             if (!checkinDate || !checkoutDate) return;
