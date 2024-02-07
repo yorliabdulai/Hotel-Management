@@ -56,7 +56,13 @@ const {data: room, error, isLoading} = useSWR<Room>(`/api/room?slug=${slug}`, fe
                 price: room.price
             });
             if(stripe){
-                
+                const result = await stripe.redirectToCheckout({
+                    sessionId: stripeSession.id
+                });
+            if(result.error){
+                toast.error("Payment Failed")
+
+            }
             }
         } catch (error) {
             
