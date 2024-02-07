@@ -13,6 +13,7 @@ import { GiSmokeBomb } from "react-icons/gi";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { getStripe } from "@/libs/stripe";
 
 const RoomDetails = (props: {params: {slug: string}}) => {
     const {params: {slug},
@@ -43,6 +44,7 @@ const {data: room, error, isLoading} = useSWR<Room>(`/api/room?slug=${slug}`, fe
         const numberOfDays = calcNumDays()
         const hotelRoomSlug = room.slug.current;
         // Integrate payment systems
+        const stripe = await getStripe()
         try {
             const {data: stripeSession} = await axios.post('/api/stripe',{
                 checkinDate,
@@ -52,7 +54,10 @@ const {data: room, error, isLoading} = useSWR<Room>(`/api/room?slug=${slug}`, fe
                 numberOfDays,
                 hotelRoomSlug,
                 price: room.price
-            })
+            });
+            if(stripe){
+                
+            }
         } catch (error) {
             
         }
