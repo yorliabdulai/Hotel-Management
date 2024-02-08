@@ -65,7 +65,9 @@ const {data: room, error, isLoading} = useSWR<Room>(`/api/room?slug=${slug}`, fe
             }
             }
         } catch (error) {
-            
+         console.log('Error:', error) 
+         toast.error("An error occured")
+
         }
         }
         const calcNumDays = () => {

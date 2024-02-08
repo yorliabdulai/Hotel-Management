@@ -42,7 +42,7 @@ type RequestData = {
                         name: room.name,
                         images: room.images.map((image: { url: any; }) => image.url),
                     },
-                    
+                    unit_amount: parseInt((totalPrice * 100).toString())
                 },
                 quantity: 1,
             }],
