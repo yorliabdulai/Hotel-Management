@@ -22,14 +22,15 @@ const [checkinDate, setCheckinDate] = useState<Date | null>(null)
 const [checkoutDate, setCheckoutDate] = useState<Date | null>(null)
 const [adults, setAdults] = useState(1)
 const [noOfChildren, setNoOfChildren] = useState(0)
-const fetchRoom = async () => {
-    const room = await getRoom(slug);
-    return room[0];
-  };
-const {data: room, error, isLoading} = useSWR<Room>(`/api/room?slug=${slug}`, fetchRoom);
-    if (error) throw new Error("Cannot fetch data");
-    if (typeof room === "undefined" && !isLoading) throw new Error("Cannot fetch data");
-    if (!room) return <LoadingSpinner />
+const fetchRoom = async () => getRoom(slug);
+
+  const { data: room, error, isLoading } = useSWR('/api/room', fetchRoom);
+
+  if (error) throw new Error('Cannot fetch data');
+  if (typeof room === 'undefined' && !isLoading)
+    throw new Error('Cannot fetch data');
+
+  if (!room) return <LoadingSpinner />;
     const calcMinCheckoutDate = () => {
         if(checkinDate){
           const nextDay = new Date(checkinDate);
@@ -50,7 +51,7 @@ const {data: room, error, isLoading} = useSWR<Room>(`/api/room?slug=${slug}`, fe
                 checkinDate,
                 checkoutDate,
                 adults,
-                childern: noOfChildren,
+                children: noOfChildren,
                 numberOfDays,
                 hotelRoomSlug,
                 price: room.price
