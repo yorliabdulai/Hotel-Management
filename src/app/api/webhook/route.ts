@@ -1,3 +1,4 @@
+import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
 const checkout_session_completed = 'checkout.session.completed';
@@ -10,8 +11,10 @@ export async function POST(req: Request, res: Response) {
     const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
     let event: Stripe.Event;
     try {
-        
-    } catch (error) {
-        
+        if(!sig || !webhookSecret) return
+        event = stripe.webhooks.constructEvent(reqBody, sig, webhookSecret);
+    } catch (error: any) {
+        return new NextResponse(`Webhook Error: ${error.message}`, { status: 500 });   
     }
+    // load our event
 }
