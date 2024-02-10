@@ -49,6 +49,7 @@ export async function POST(req: Request, res: Response) {
                 totalPrice: Number(totalPrice),
                 discount: Number(discount),
          });
+         
          return NextResponse.json("Booking Successful",
          { status: 200, statusText: "Booking Successful" },)
             
