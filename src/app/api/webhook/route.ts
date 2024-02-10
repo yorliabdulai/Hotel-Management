@@ -23,8 +23,13 @@ export async function POST(req: Request, res: Response) {
             console.log('Checkout session completed', session);
 
             // Create a booking
+
+            return NextResponse.json("Booking Successful",
+                { status: 200, statusText: "Booking Successful" },)
             break;
         default:
             console.log(`Unhandled event type ${event.type}`);
     }
+    return NextResponse.json("Event Received",
+    { status: 200, statusText: "Event Received" },)
 }
