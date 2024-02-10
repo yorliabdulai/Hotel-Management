@@ -48,7 +48,18 @@ type RequestData = {
             }],
             payment_method_types: ["card"],
             success_url: `${origin}/users/${userId}`,
-            
+            metadata:{
+                checkinDate: formattedCheckinDate,
+                checkoutDate: formattedCheckoutDate,
+                adults,
+                children,
+                numberOfDays,
+                hotelRoom: room.id,
+                user: userId,
+                discount: room.discount,
+                totalPrice
+            },
+            }
         })
         return  NextResponse.json(stripeSession, { status: 200, statusText: "Payment session created" }, );
      } catch (error: any) {
