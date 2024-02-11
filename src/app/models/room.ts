@@ -1,47 +1,49 @@
-type coverImage = {
-
+type CoverImage = {
     url: string;
-}
-export type Image = {
+  };
+  
+  export type Image = {
     _key: string;
-    url: string
-}
-type Amenity = {
+    url: string;
+  };
+  
+  type Amenity = {
     _key: string;
     amenity: string;
     icon: string;
-
-}
-type Slug = {
+  };
+  
+  type Slug = {
+    _type: string;
     current: string;
-    type: string;
-}
-export type Room = {
+  };
+  
+  export type Room = {
     _id: string;
-    coverImage: coverImage;
+    coverImage: CoverImage;
     description: string;
     dimension: string;
     discount: number;
     images: Image[];
-    isFeatured: boolean;
     isBooked: boolean;
+    isFeatured: boolean;
     name: string;
-    numberOfbeds: number;
+    numberOfBeds: number;
     offeredAmenities: Amenity[];
     price: number;
     slug: Slug;
     specialNote: string;
     type: string;
-}
-export type CreateBookingDto = {
-    user: string,
-    hotelRoom: string,
-    checkinDate: string,
-    checkoutDate: string,
-    numberOfDays: number,
-    adults: number,
-    children: number,
-    totalPrice: number,
-    discount: number,
-    
-}
+  };
+  
+  export type CreateBookingDto = {
+    user: string;
+    hotelRoom: string;
+    checkinDate: string;
+    checkoutDate: string;
+    numberOfDays: number;
+    adults: number;
+    children: number;
+    totalPrice: number;
+    discount: number;
+  };
