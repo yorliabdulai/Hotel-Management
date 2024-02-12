@@ -1,10 +1,10 @@
-import { CreateReviewDto, Review } from './../models/review';
+import { CreateReviewDto, Review } from './../app/models/review';
 import axios from 'axios';
 
-import { CreateBookingDto, Room } from '@/models/room';
+import { CreateBookingDto, Room } from '@/app/models/room';
 import sanityClient from './sanity';
 import * as queries from './sanityQueries';
-import { Booking } from '@app/models/booking';
+import { Booking } from '@/app/models/booking';
 import { UpdateReviewDto } from '@/app/models/review';
 
 export async function getFeaturedRoom() {
