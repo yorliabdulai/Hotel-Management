@@ -10,7 +10,7 @@ import {
 import { FC } from 'react';
 import { Bar } from 'react-chartjs-2';
 
-import { Booking } from '@/models/booking';
+import { Booking } from '@/app/models/booking';
 
 ChartJS.register(Tooltip, CategoryScale, LinearScale, BarElement);
 
