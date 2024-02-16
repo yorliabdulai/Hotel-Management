@@ -33,7 +33,11 @@ export async function POST(req: Request, res: Response) {
     return new NextResponse('Authentication Required', { status: 500 });
   }
 
-  const { roomId, reviewText, ratingValue } = await req.json();
+  const { roomId, reviewText, ratingValue } = await req.json() as {
+    roomId: string;
+    reviewText: string;
+    ratingValue: number;
+  };
 
   if (!roomId || !reviewText || !ratingValue) {
     return new NextResponse('All fields are required', { status: 400 });
