@@ -48,14 +48,10 @@ const UserDetails = (props: { params: { id: string } }) => {
         reviewText: ratingText,
         ratingValue,
         roomId,
-      }, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+      });
       toast.success('Review Submitted');
     } catch (error) {
-      console.log(error);
+      
       toast.error('Review Failed');
     } finally {
       setRatingText('');
